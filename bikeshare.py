@@ -52,7 +52,6 @@ def get_filters():
             print('Invalid input. Please enter 1, 2, or 3.')
 
     month = day = None
-   
 
     if time_filter == 'month':
         while True:
@@ -119,13 +118,19 @@ def ask_popular_times_and_stations(df):
     print(top_starting_stations)
     print('Which station is the least popular starting point for bike rides (bottom 3)?')
     print(lowest_starting_stations)
-    
+
 # User statistics
 def ask_user_statistics(df):
     print('\nUser Statistics:')
     user_counts = df['User Type'].value_counts()
     print('Number of Subscribers vs. Number of Customers:')
     print(user_counts)
+
+    # Gender statistics
+    if 'Gender' in df.columns:
+        gender_counts = df['Gender'].value_counts()
+        print('Number of Male vs. Number of Female:')
+        print(gender_counts)
 
 # Main function Data analysis
 def main():
