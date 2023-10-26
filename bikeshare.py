@@ -90,7 +90,7 @@ def display_raw_data(df):
 
     # Asking additional questions after displaying raw data
     while True:
-        additional_questions = input('\nSelect an option:\n1. Trip Durations\n2. Popular Times and Stations\n3. User Statistics\n4. Exit\n').strip().lower()
+        additional_questions = input('\nSelect an option:\n1. Trip Durations\n2. Popular Times and Stations\n3. User Statistics\n4. Restart\n5. Exit\n').strip().lower()
         if additional_questions == '1':
             ask_trip_durations(df)
         elif additional_questions == '2':
@@ -98,10 +98,12 @@ def display_raw_data(df):
         elif additional_questions == '3':
             ask_user_statistics(df)
         elif additional_questions == '4':
+            main()  # Restart the program
+        elif additional_questions == '5':
             print('Thank you for using the program.')
             break
         else:
-            print('Invalid input. Please enter 1, 2, 3, or 4.')
+            print('Invalid input. Please enter 1, 2, 3, 4, or 5.')
 
 # Trip durations
 def ask_trip_durations(df):
