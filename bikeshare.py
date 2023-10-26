@@ -52,7 +52,6 @@ def get_filters():
             print('Invalid input. Please enter 1, 2, or 3.')
 
     month = day = None
-   
 
     if time_filter == 'month':
         while True:
@@ -86,46 +85,6 @@ def display_raw_data(df):
         if start_idx >= len(df):
             print("No more raw data to display.")
             break
-
-        display_raw_data = input('Would you like to see 5 more rows of raw data? Enter yes or no.').strip().lower()
-
-    # Asking additional questions after displaying raw data
-    while True:
-        additional_questions = input('\nSelect an option:\n1. Trip Durations\n2. Popular Times and Stations\n3. User Statistics\n4. Exit\n').strip().lower()
-        if additional_questions == '1':
-            ask_trip_durations(df)
-        elif additional_questions == '2':
-            ask_popular_times_and_stations(df)
-        elif additional_questions == '3':
-            ask_user_statistics(df)
-        elif additional_questions == '4':
-            print('Thank you for using the program.')
-            break
-        else:
-            print('Invalid input. Please enter 1, 2, 3, or 4.')
-
-# Trip durations
-def ask_trip_durations(df):
-    print('\nTrip Durations:')
-    average_trip_duration = df['Trip Duration'].mean()
-    print(f'What is the average trip duration? {average_trip_duration:.2f} seconds')
-
-# Popular times and stations
-def ask_popular_times_and_stations(df):
-    print('\nPopular Times and Stations:')
-    top_starting_stations = df['Start Station'].value_counts().head(3)
-    lowest_starting_stations = df['Start Station'].value_counts().tail(3)
-    print('Which station is the most popular starting point for bike rides (top 3)?')
-    print(top_starting_stations)
-    print('Which station is the least popular starting point for bike rides (bottom 3)?')
-    print(lowest_starting_stations)
-    
-# User statistics
-def ask_user_statistics(df):
-    print('\nUser Statistics:')
-    user_counts = df['User Type'].value_counts()
-    print('Number of Subscribers vs. Number of Customers:')
-    print(user_counts)
 
 # Main function Data analysis
 def main():
