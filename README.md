@@ -56,7 +56,7 @@ For support and inquiries, contact bogopatumisang@gmail.com.
 ## Project Status
 This project is part of the Udacity Data Science Nanodegree Program.
 
-### Revamped Changes 26 - 10 - 2023
+# Revamped Changes 26 - 10 - 2023
 
 Updates make the code easier to use and understand, enhancing the bike share data exploration experience.
 
