@@ -19,49 +19,72 @@ def load_data(city):
     except FileNotFoundError:
         return None
 
-# Function to check data entry
-def check_data_entry(prompt, valid_entries):
-    try:
-        user_input = str(input(prompt)).lower()
-        while user_input not in valid_entries:
-            print('It looks like your entry is incorrect.')
-            print('Let\'s try again!')
-            user_input = str(input(prompt)).lower()
-
-        print('Great! You\'ve chosen: {}\n'.format(user_input))
-        return user_input
-
-    except:
-        print('There seems to be an issue with your input.')
-
 # User input for city and time filter
 def get_filters():
-    print('Hello! Let\'s explore some US bikeshare data!')
-    valid_cities = ['chicago', 'new york city', 'washington']
-    prompt_cities = 'Choose one of the 3 cities (Chicago, New York City, Washington): '
-    city = check_data_entry(prompt_cities, valid_cities)
+    print('Hi, welcome to Motivate - Let\'s explore some bike share data.')
 
-    valid_months = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
-    prompt_month = 'Choose a month (all, January, February, ... , June): '
-    month = check_data_entry(prompt_month, valid_months)
+    while True:
+        city = input('Select a city:\n1. Chicago\n2. New York\n3. Washington\n').strip().lower()
+        if city == '1':
+            city = 'chicago'
+            break
+        elif city == '2':
+            city = 'new york'
+            break
+        elif city == '3':
+            city = 'washington'
+            break
+        else:
+            print('Invalid input. Please enter 1, 2, or 3.')
 
-    valid_days = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-    prompt_day = 'Choose a day (all, Monday, Tuesday, ... Sunday): '
-    day = check_data_entry(prompt_day, valid_days)
+    while True:
+        time_filter = input('Select a time filter:\n1. Month\n2. Day\n3. Not at all\n').strip().lower()
+        if time_filter == '1':
+            time_filter = 'month'
+            break
+        elif time_filter == '2':
+            time_filter = 'day'
+            break
+        elif time_filter == '3':
+            time_filter = 'not at all'
+            break
+        else:
+            print('Invalid input. Please enter 1, 2, or 3.')
 
-    print('-' * 40)
-    return city, month, day
+    month = day = None
+
+    if time_filter == 'month':
+        while True:
+            month = input('Select a month:\n1. January\n2. February\n3. March\n4. April\n5. May\n6. June\n').strip().lower()
+            if month in ['1', '2', '3', '4', '5', '6']:
+                month = ['January', 'February', 'March', 'April', 'May', 'June'][int(month) - 1]
+                break
+            else:
+                print('Invalid input. Please enter a number from 1 to 6.')
+
+    elif time_filter == 'day':
+        while True:
+            day = input('Select a day:\n1. Monday\n2. Tuesday\n3. Wednesday\n4. Thursday\n5. Friday\n6. Saturday\n7. Sunday\n').strip().lower()
+            if day in ['1', '2', '3', '4', '5', '6', '7']:
+                day = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][int(day) - 1]
+                break
+            else:
+                print('Invalid input. Please enter a number from 1 to 7.')
+
+    return city, time_filter, month, day
 
 # Display raw data upon request
 def display_raw_data(df):
-    pd.set_option("display.max_columns", 200)  # To display all columns
-    i = 0
-    while True:
-        display_data = input('\nDo you want to view 5 rows of raw data? Please enter yes or no.\n')
-        if display_data.lower() != 'yes':
+    display_raw_data = input('\nWould you like to see the raw data? Enter yes or no.').strip().lower()
+    start_idx = 0
+
+    while display_raw_data == 'yes':
+        print(df.iloc[start_idx:start_idx + 5])
+        start_idx += 5
+
+        if start_idx >= len(df):
+            print("No more raw data to display.")
             break
-        print(df.iloc[np.arange(0 + i, 5 + i)])
-        i += 5
 
 # Main function Data analysis
 def main():
