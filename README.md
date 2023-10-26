@@ -55,4 +55,29 @@ For support and inquiries, contact bogopatumisang@gmail.com.
 
 ## Project Status
 This project is part of the Udacity Data Science Nanodegree Program.
+
+### Revamped Changes 26 - 10 - 2023
+
+Updates make the code easier to use and understand, enhancing the bike share data exploration experience.
+
+### User-Friendly Input
+
+   - The code now handles user input more gracefully. It's case-insensitive for city names and guides users through valid selections without errors.
+
+### Streamlined Input Process
+
+   - We've simplified how users interact with the code. A dedicated function ensures input is valid, making the code cleaner and more user-friendly.
+
+### Added Features
+
+   - The revamped code offers new options, including calculating the average trip duration, identifying popular starting stations, and breaking down user statistics (subscribers vs. customers).
+
+### Enhanced Readability
+
+   - We've made the code easier to understand. More comments and docstrings improve readability, especially for those who want to work with the code.
+
+### User-Oriented Data Display
+
+   - Users can now view raw data more conveniently, with the option to see it in small chunks and access additional statistics.
+
 # Undacity-DataScience-Nano-Degree
